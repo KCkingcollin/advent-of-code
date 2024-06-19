@@ -1,0 +1,19 @@
+main 
+    get input
+    solve day 1 #1 func
+return exit
+
+solve day 1 #1 func 
+    loops over every line
+        find first digit func
+        find last digit func
+return sum
+
+find first digit func
+    find the first digit and stop
+return digit
+
+find last digit func
+    find the last digit and stop
+return digit
+
