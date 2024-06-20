@@ -51,7 +51,7 @@ func solveDayOneOfOne() (int, error) {
             }
             sum += result
         }
-        fmt.Printf("%v%v\n", firstDigit, lastDigit)
+        // fmt.Printf("%v%v\n", firstDigit, lastDigit)
     }
     return sum, err
 }
