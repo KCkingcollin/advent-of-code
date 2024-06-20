@@ -23,5 +23,3 @@ find last digit func
         if there is no digit then return
         get the index of the digit
 return digit int
-
-test
