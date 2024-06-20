@@ -13,7 +13,7 @@ import (
 
 func main() {
     start := time.Now()
-    puzzle, err := os.Open("puzzle.txt")
+    puzzle, err := os.Open("puzzle")
     if err != nil {
         fmt.Println("Error opening file:", err)
     }
@@ -27,9 +27,10 @@ func main() {
 
     for scanner.Scan() {
         line = scanner.Text()
-        num1 := words2numF(line)
-        num2 := words2numB(line)
-        finalNum := getFirstAndLast(num1 + num2)
+        // num1 := words2numF(line)
+        // num2 := words2numB(line)
+        // finalNum := getFirstAndLast(num1 + num2)
+        finalNum := getFirstAndLast(line)
         result, err := strconv.Atoi(finalNum)
         if err != nil {
             fmt.Printf("string convert failed: %s\n", err)

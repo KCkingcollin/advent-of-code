@@ -2,24 +2,21 @@ package main
 
 import (
     "fmt"
-    "strings"
 )
 
-// LastIndexReverse finds the last occurrence of substr in s, searching backwards.
-func LastIndexReverse(s, substr string) int {
-    // Use strings.LastIndex to find the last occurrence of substr in s
-    return strings.LastIndex(s, substr)
+func combineRunes(runes []rune) string {
+    var combined string
+    for _, r := range runes {
+        combined += string(r)
+    }
+    return combined
 }
 
 func main() {
-    s := "hello, world, hello, Go"
-    substr := "hello"
-    
-    index := LastIndexReverse(s, substr)
-    if index != -1 {
-        fmt.Printf("Last occurrence of '%s' in '%s' is at index %d\n", substr, s, index)
-    } else {
-        fmt.Printf("'%s' not found in '%s'\n", substr, s)
-    }
+    runes := []rune{'H', 'e', 'l', 'l', 'o', ',', ' ', '世', '界'}
+    combined := combineRunes(runes)
+
+    // Print the combined string
+    fmt.Printf("Combined: %s\n", combined)
 }
 
