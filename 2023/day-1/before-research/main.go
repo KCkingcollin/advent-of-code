@@ -1,15 +1,17 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"regexp"
+	"strconv"
 	"strings"
+	"time"
 	"unicode"
-    "strconv"
-    "bufio"
-    "regexp"
 )
 
 func main() {
+    start := time.Now()
     scanner := bufio.NewScanner(strings.NewReader(puzzle))
     if err := scanner.Err(); err != nil {
         fmt.Printf("Error reading input: %v\n", err)
@@ -31,6 +33,9 @@ func main() {
     }
 
     fmt.Println("Result:", sum)
+    end := time.Now()
+    mainLoopTime := end.Sub(start)
+    fmt.Printf("Main loop took %v to complete.\n", mainLoopTime)
 }
 
 func words2numF (input string) (string) {
