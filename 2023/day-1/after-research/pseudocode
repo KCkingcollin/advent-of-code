@@ -34,6 +34,13 @@ min pos func (a, b)
     else b
 return int, index
 
+max pos func (a, b)
+    if a = -1 then b
+    if b = -1 then a
+    if a > b then a
+    else b
+return int, index
+
 find first named int func
     walk over the string
         check if the length is 0 and stop

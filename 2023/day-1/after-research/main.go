@@ -79,8 +79,7 @@ func solveDay1Part2() (int, error) {
             return -1, err
         } 
         sum += num
-        // fmt.Println(num)
-        fmt.Printf("puzzle: %s num: %v\n", line, num)
+        // fmt.Printf("puzzle: %s num: %v\n", line, num)
     }
     return sum, err
 }
@@ -145,7 +144,7 @@ func findFirstNamedInt(input string) (rune, int) {
             }
         }
     }
-    fmt.Println("no words F: ", input)
+    // fmt.Println("no words F: ", input)
     return -1, -1
 }
 
@@ -158,7 +157,7 @@ func findLastNamedInt(input string) (rune, int) {
             }
         }
     }
-    fmt.Println("no words B: ", input)
+    // fmt.Println("no words B: ", input)
     return -1, -1
 }
 
