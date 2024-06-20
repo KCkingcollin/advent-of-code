@@ -1,6 +1,7 @@
 main 
     get input
     solve day 1 #1 func
+    print solution string
 return exit
 
 solve day 1 #1 func 
@@ -8,17 +9,18 @@ solve day 1 #1 func
         find first digit func
         find last digit func
         put the digits together and add them to sum
-return sum
+        print line for debugging
+return sum int
 
 find first digit func
     find the first digit and stop
         if there is no digit then return
         get the index of the digit
-return digit
+return digit int
 
 find last digit func
     find the last digit and stop
         if there is no digit then return
         get the index of the digit
-return digit
+return digit int
 
