@@ -1,25 +1,65 @@
 main 
     get input
-    solve day 1 #1 func
+#    solve day 1 part 1 func
+    dove day 1 part 2 func
     print solution string
 return exit
 
-solve day 1 #1 func 
+solve day 1 part 1 func 
     loops over every line
         find first digit func
         find last digit func
-        put the digits together and add them to sum
+        put the digits together 
+        add digits to sum
         print line for debugging
-return sum int
+return int
+
+solve day 1 part 2 func 
+    loops over every line
+        _, first digit = min pos func (first named int, first digit int)
+        _, last digit = min pos func (last named int, last digit int)
+        put the digits together 
+        add digits to sum
+        print line for debugging
+return int
+
+is named int func
+    check if its a named int
+return int
+
+min pos func (a, b)
+    if a = -1 then b
+    if b = -1 then a
+    if a < b then a
+    else b
+return int, index
+
+find first named int func
+    walk over the string
+        check if the length is 0 and stop
+        end of str = min(length of str - i, 5)
+        check str (end of str) -> is named int func 
+        replace it with a int
+return int, index
+
+find last named int func
+    walk over the string in reverse
+        check if the length is 0 and stop
+        end of str = min(length of str - i, 5)
+        check str (end of str) -> is named int func 
+        replace it with a int
+return int, index 
 
 find first digit func
     find the first digit and stop
+        check if the length is 0 and stop
         if there is no digit then return
         get the index of the digit
-return digit int
+return digit int, index
 
 find last digit func
     find the last digit and stop
+        check if the length is 0 and stop
         if there is no digit then return
         get the index of the digit
-return digit int
+return digit int, index
