@@ -28,7 +28,7 @@ func main() {
         if err != nil {
             fmt.Printf("string convert failed: %s\n", err)
         }
-        fmt.Printf("%v\n", result)
+        // fmt.Printf("%v\n", result)
         sum += result
     }
 
