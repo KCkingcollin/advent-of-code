@@ -1,12 +1,35 @@
 package main
 
 import (
-    "fmt"
+	"bufio"
+	"fmt"
+	"strings"
+	"time"
 )
 
 func main() {
-    result := solveDayOne()
-    fmt.Println(solveDayOne)
+    start := time.Now()
+    result := solveDayOne(puzzle)
+    fmt.Println(result)
+    end := time.Now()
+    mainLoopTime := end.Sub(start)
+    fmt.Printf("Main loop took %v to complete.\n", mainLoopTime)
+}
+
+func solveDayOne(input string) int {
+    scanner := bufio.NewScanner(strings.NewReader(input))
+    var sum int
+    var firstDigit int
+    var lastDigit int
+    for scanner.Scan() {
+        fmt.Printf("%v%v", firstDigit, lastDigit)
+    }
+    return sum
+}
+
+func findFirst(input string) int {
+    var digit int
+    return digit
 }
 
 const puzzle string = `threehqv2
