@@ -1,0 +1,49 @@
+main 
+    get input
+    solve day 1 part 1 func
+    print solution string
+return exit
+
+solve day 2 part 1 func 
+    loops over every line
+        put the digits together 
+        game = find str backward func        
+        if game -> add digits to sum
+        print line for debugging
+return int
+
+find str backward func (str) (int, bool)
+    walk over the string in reverse
+        end of str = min(length of str - i, 5)
+        num location = min(length of str - 1, 3)
+        check str (end of str) -> has red || green || blue 
+            find digit func (num location, color str)
+        if "Game" return int, bool
+return int, bool
+
+find digit func (index, str) (bool, int)
+    find the first 2 digits and stop
+        get the digit
+            switch {
+            case input str == red: 
+                if digit > 12 --> red = false
+                    return false, 0
+                else 
+                    red = true
+            case input str == green: 
+                if digit > 13 --> green = false
+                    return false, 0
+                else 
+                    green = true
+            case input str == blue: 
+                if digit > 14 --> blue = false
+                    return false, 0
+                else 
+                    blue = true
+            case input str == ":": 
+                return index int = game 
+            }
+            if red && green && blue {
+                return true, game
+            }
+return bool
