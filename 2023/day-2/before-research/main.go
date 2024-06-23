@@ -51,10 +51,7 @@ func findStingBackwards(input string) (bool, int) {
         endOfStr := min(len(input)-i, 5)
         numLocation := min(len(input)-i, 3)
         wordBlock := input[i : i+endOfStr]
-        numBlock := input[i : i+numLocation]
-        if len(input)-5 >= i {
-            numBlock = input[i-3 : i-3+numLocation]
-        }
+        numBlock := input[i-3 : i-3+numLocation]
         if i+endOfStr <= len(input) {
             good, ID = findDigit(numBlock, wordBlock)
             if find(wordBlock, "red") || find(wordBlock, "green") || find(wordBlock, "blue") {

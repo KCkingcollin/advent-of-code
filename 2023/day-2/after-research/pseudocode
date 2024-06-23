@@ -1,23 +1,33 @@
 main 
     get input
     solve day 2 part 1 func
-    print solution string
+    print solution 
 return exit
 
-solve day 2 part 1 func 
+solve day 2 part 1 func (string) (int)
     loops over every line
-        Game ID = parse game id
-        put the digits together 
-        game = find str backward func - Game ID index
-        if game -> add digits to sum
-return int
+        Game ID idx = parse game id func
+        game ID = int @ game ID idx
+        if find str func -> add game ID to sum
+return sum
 
-find str backward func (str) (bool)
-    walk over the string in reverse
+parse game id func (input string) (int)
+    walk over string
+        if ":" -> get idx - 3
+return idx
+
+find str func (int, str) (bool)
+    walk over the string starting @ int
         end of str = min(length of str - i, 5)
-        num location = min(length of str - 1, 3)
-        check str (end of str) -> has red || green || blue 
-            find digit func (num location, color str)
-        if "Game" return int, bool
-return bool
+        num location = min(length of str - i - 5, 3)
+        exceeds max func(srt, num) -> false -> return false
+return true
 
+exceeds max func (input string, num int) (bool)
+    map(color, max) { 
+        red, 12
+        green, 13
+        blue, 14
+    }
+    if num > map(input) -> return false
+return true

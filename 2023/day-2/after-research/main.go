@@ -1,13 +1,14 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"os"
-	"strconv"
-	"strings"
-	"time"
-	"unicode"
+    "bufio"
+    "fmt"
+    "log"
+    "os"
+    "strconv"
+    "strings"
+    "time"
+    "unicode"
 )
 
 func main() {
@@ -31,85 +32,61 @@ func solveDay2Part1() (int, error) {
     defer puzzle.Close()
     scanner := bufio.NewScanner(puzzle)
     var sum int
-    var line string
     for scanner.Scan() {
-        line = scanner.Text()
-        isPossible, num := findStingBackwards(line)
-        if isPossible && num > 0 {
-        sum += num
+        line := strings.Split(scanner.Text(), ": ")
+        gameID := getNum(strings.Split(line[0], "Game ")[1])        
+        isPossible := checkString(line[1])
+        if isPossible {
+            sum += gameID
         }
-        fmt.Println(num)
+        // fmt.Println(gameID)
     }
     return sum, err
 }
 
-func findStingBackwards(input string) (bool, int) {
-    find := strings.HasPrefix
-    var good bool
-    var ID int
-    for i := len(input)-1; i >= 0; i-- {
-        endOfStr := min(len(input)-i, 5)
-        numLocation := min(len(input)-i, 3)
-        wordBlock := input[i : i+endOfStr]
-        numBlock := input[i : i+numLocation]
-        if len(input)-5 >= i {
-            numBlock = input[i-3 : i-3+numLocation]
-        }
-        if i+endOfStr <= len(input) {
-            good, ID = findDigit(numBlock, wordBlock)
-            if find(wordBlock, "red") || find(wordBlock, "green") || find(wordBlock, "blue") {
-                if !good {
-                    return false, -1
-                }
-            } else if find(wordBlock, ":") {
-                return good, ID
+func getNum(input string) (int) {
+    var numStr string
+    var err error
+    var num int
+    for _, r := range input {
+        if unicode.IsDigit(r) {
+            numStr += string(r)
+            num, err = strconv.Atoi(numStr)
+            if err != nil {
+                log.Fatalf("error converting string to number: %v\n", err)
             }
         }
     }
-    return false, -1
+    return num
 }
 
-func findDigit(numInput string, word string) (bool, int) {
-    find := strings.HasPrefix
-    var numStr string
-    var num int
-    var err error
-    // fmt.Println(numInput)
-    for _, r := range numInput {
-        if unicode.IsDigit(r) {
-            numStr += string(r)
+func checkString(input string) (bool) {
+    var split []string
+    splitIn := strings.Split(input, "; ")
+    for _, block := range splitIn {
+        split = append(split, strings.Split(block, ", ")...)
+    }
+    for i, r := range split {
+        numWord := strings.Split(r, " ")
+        // fmt.Println(numWord[0], numWord[1])
+        if exceedsMax(string(numWord[1]), getNum(numWord[0])) {
+            return false
+            // if exceedsMax is true, then return a false bool
+        } else if len(split)-1 <= i {
+            return true
+            // if exceedsMax is false, then return a true bool
         }
     }
-    if numStr != "" {
-        num, err = strconv.Atoi(numStr)
-        if err != nil {
-            fmt.Printf("error converting string to number: %v\n", err)
-            return false, -1
-        }
+    return false
+    // if exceedsMax is never false, then return a true bool
+}
+
+func exceedsMax(word string, num int) (bool) {
+    isMax := map[string]int {
+        "red": 12,
+        "green": 13,
+        "blue": 14,
     }
-    switch {
-    case find(word, "red"):
-        if 0 > num || num > 12 {
-            return false, -1
-        } else {
-            return true, -1
-        }
-    case find(word, "green"):
-        if 0 > num || num > 13 {
-            return false, -1
-        } else {
-            return true, -1
-        }
-    case find(word, "blue"):
-        if 0 > num || num > 14 {
-            return false, -1
-        } else {
-            return true, -1
-        }
-    case find(word, ":"):
-        return true, num
-    default:
-        return false, -1
-    }
+    return num > isMax[word]
 }
 
