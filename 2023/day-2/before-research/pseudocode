@@ -1,6 +1,6 @@
 main 
     get input
-    solve day 1 part 1 func
+    solve day 2 part 1 func
     print solution string
 return exit
 
