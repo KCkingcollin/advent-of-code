@@ -1,22 +1,23 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
 )
 
-func combineRunes(runes []rune) string {
-    var combined string
-    for _, r := range runes {
-        combined += string(r)
-    }
-    return combined
-}
-
 func main() {
-    runes := []rune{'H', 'e', 'l', 'l', 'o', ',', ' ', '世', '界'}
-    combined := combineRunes(runes)
-
-    // Print the combined string
-    fmt.Printf("Combined: %s\n", combined)
+    maxValues := map[string]map[bool]func(v any) {
+        "red": {
+            true: func(v any) {fmt.Println(v)},
+            false: func(v any) {fmt.Println(v, "fuck")},
+        },
+        "green": {
+            true: func(v any) {fmt.Println(v)},
+            false: func(v any) {fmt.Println(v, "fuck")},
+        },
+        "blue": {
+            true: func(v any) {fmt.Println(v)},
+            false: func(v any) {fmt.Println(v, "fuck")},
+        },
+    }
+    maxValues["red"][true]("fuck ya")
 }
-
