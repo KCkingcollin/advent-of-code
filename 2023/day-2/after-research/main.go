@@ -13,8 +13,8 @@ import (
 
 func main() {
     start := time.Now()
-    // result, err := solveDay2Part1()
-    result, err := solveDay2Part2()
+    result, err := solveDay2Part1()
+    // result, err := solveDay2Part2()
     // the problem was so similar that i don't think it makes sense to change too much
     if err != nil {
         fmt.Printf("Error solving puzzle: %s", err)
@@ -58,7 +58,6 @@ func solveDay2Part1() (int, error) {
         if isPossible {
             sum += gameID
         }
-        // fmt.Println(gameID)
     }
     return sum, err
 }
